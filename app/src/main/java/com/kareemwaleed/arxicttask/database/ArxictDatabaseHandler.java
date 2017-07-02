@@ -37,7 +37,7 @@ public class ArxictDatabaseHandler {
     }
 
     public boolean createAccount(String fullName, String emailAddress, String password){
-        String query = "ISERT INTO user (name, email, password) VALUES('" + fullName + "', '" + emailAddress
+        String query = "INSERT INTO user (name, email, password) VALUES('" + fullName + "', '" + emailAddress
                 +"', '"+ password + "')";
         try {
             database.execSQL(query);

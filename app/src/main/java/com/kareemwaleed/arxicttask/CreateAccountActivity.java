@@ -69,7 +69,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 else {
                     boolean isSuccessful = databaseHandler.createAccount(name, email, password);
                     if(isSuccessful){
-
+                        Toast.makeText(CreateAccountActivity.this, "Successful", Toast.LENGTH_LONG).show();
                     }else
                         Toast.makeText(CreateAccountActivity.this, "Registration Error", Toast.LENGTH_LONG).show();
                 }

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.kareemwaleed.arxicttask.database.ArxictDatabaseHandler;
 
@@ -69,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                 else{
                     boolean isSuccessful = databaseHandler.login(email, password);
                     if(isSuccessful){
-
+                        Toast.makeText(LoginActivity.this, "Successful", Toast.LENGTH_LONG).show();
                     }else
                         passwordTextInputLayout.setError("The password entered doesn't the email");
                 }
