@@ -18,7 +18,7 @@ import android.widget.ListView;
 
 import com.kareemwaleed.arxicttask.R;
 import com.kareemwaleed.arxicttask.models.ContactsListItem;
-import com.kareemwaleed.arxicttask.support.ContactsListAdapter;
+import com.kareemwaleed.arxicttask.adapters.ContactsListAdapter;
 
 import java.util.ArrayList;
 

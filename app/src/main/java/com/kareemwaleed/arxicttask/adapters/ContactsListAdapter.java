@@ -1,4 +1,4 @@
-package com.kareemwaleed.arxicttask.support;
+package com.kareemwaleed.arxicttask.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

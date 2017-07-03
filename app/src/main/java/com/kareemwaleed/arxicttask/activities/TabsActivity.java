@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import com.kareemwaleed.arxicttask.R;
 import com.kareemwaleed.arxicttask.fragments.ContactsListFragment;
 import com.kareemwaleed.arxicttask.fragments.JsonListFragment;
-import com.kareemwaleed.arxicttask.support.ViewPagerAdapter;
+import com.kareemwaleed.arxicttask.adapters.ViewPagerAdapter;
 
 public class TabsActivity extends AppCompatActivity {
 

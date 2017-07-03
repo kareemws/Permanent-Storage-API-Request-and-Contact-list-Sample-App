@@ -1,4 +1,4 @@
-package com.kareemwaleed.arxicttask.support;
+package com.kareemwaleed.arxicttask.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
