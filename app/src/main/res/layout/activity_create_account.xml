@@ -22,7 +22,7 @@
                 android:id="@+id/full_name_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Full Name"
+                android:hint="@string/full_name"
                 android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
@@ -40,7 +40,7 @@
                 android:id="@+id/email_address_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email Address"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
 
@@ -59,7 +59,7 @@
                 android:id="@+id/password_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 
@@ -79,7 +79,7 @@
                 android:id="@+id/password_confirmation_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password Confirmation"
+                android:hint="@string/password_confirmation"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 
@@ -92,7 +92,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="50dp"
             android:background="@color/colorAccent"
-            android:text="Create Account"
+            android:text="@string/create_account"
             android:textAllCaps="false"
             android:textSize="20sp"
             android:textStyle="bold" />

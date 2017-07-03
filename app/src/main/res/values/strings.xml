@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Arxict Task</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email Address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="create_account_question">Don\'t have an account Yet ?</string>
+    <string name="create_one_button">Create One</string>
+    <string name="full_name">Full Name</string>
+    <string name="password_confirmation">Password Confirmation</string>
+    <string name="create_account">Create Account</string>
+    <string name="contact_info">CONTACT INFORMATION</string>
+    <string name="mobile">Mobile</string>
+    <string name="logout">Logout</string>
+    <string name="no_connection">No Internet connection</string>
+    <string name="retry">Tab To Retry</string>
 </resources>

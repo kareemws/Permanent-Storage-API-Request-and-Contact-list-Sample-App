@@ -20,7 +20,7 @@
                 android:id="@+id/email_address_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email Address"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
 
@@ -39,7 +39,7 @@
                 android:id="@+id/password_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 
@@ -52,7 +52,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="50dp"
             android:background="@color/colorAccent"
-            android:text="Login"
+            android:text="@string/login"
             android:textAllCaps="false"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -69,7 +69,7 @@
                 android:layout_width="0px"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="No Account Yet ?"
+                android:text="@string/create_account_question"
                 android:textSize="20sp"
                 android:gravity="end"/>
 
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:text="Create One"
+                android:text="@string/create_one_button"
                 android:textAllCaps="false"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"

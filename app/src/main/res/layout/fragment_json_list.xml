@@ -30,7 +30,7 @@
             android:layout_below="@id/problem_icon"
             android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
-            android:text="No Internet Connection"
+            android:text="@string/no_connection"
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
@@ -40,7 +40,7 @@
             android:layout_below="@id/text"
             android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
-            android:text="Tab to Retry"
+            android:text="@string/retry"
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
     </RelativeLayout>
