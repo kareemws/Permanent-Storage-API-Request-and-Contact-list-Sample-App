@@ -15,9 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.LoginActivity"
-            android:label="Login">
-            <intent-filter>
+            android:name=".activities.LoginActivity">
+            <intent-filter android:label="Login">
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -25,7 +24,7 @@
         </activity>
         <activity
             android:name=".activities.CreateAccountActivity"
-            android:label="Create Account">
+            android:label="@string/create_account">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.LoginActivity" />
@@ -33,9 +32,9 @@
         <activity
             android:name=".activities.TabsActivity"
             android:theme="@style/NoActionBarAppTheme"
-            android:label="Contacts and Jsons"></activity>
+            android:label="@string/tabs_activity_label"/>
         <activity android:name=".activities.ContactDetailsActivity"
-            android:label="Contact Details">
+            android:label="@string/contact_details">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.TabsActivity"/>
         </activity>

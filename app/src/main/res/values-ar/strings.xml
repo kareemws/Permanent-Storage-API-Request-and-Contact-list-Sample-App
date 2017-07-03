@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Arxict Task</string>
+    <string name="email">البريد الالكتروني</string>
+    <string name="password">كلمة المرور</string>
+    <string name="login">تسجيل دخول</string>
+    <string name="create_account_question"> ليس لديك حساب ؟</string>
+    <string name="create_one_button">سجل الآن</string>
+    <string name="full_name">الاسم بالكامل</string>
+    <string name="password_confirmation">تأكيد كلمة المرور</string>
+    <string name="create_account">سجل</string>
+    <string name="contact_info">معلومات عن صاحب الاسم</string>
+    <string name="mobile">الهاتف المحمول</string>
+    <string name="logout">تسجيل خروج</string>
+    <string name="no_connection">انت غير متصل بالانترنت</string>
+    <string name="retry">اضغط لاعادة المحاولة</string>
+    <string name="contact_details">تفاصيل صاحب الاسم</string>
+    <string name="tabs_activity_label">ارقام الهاتف</string>
+</resources>

@@ -70,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
                 String email = emailAddressTextInputEditText.getText().toString();
                 String password = passwordTextInputEditText.getText().toString();
                 if(email.equals("") && password.equals("")){
-                    emailAddressTextInputLayout.setError("Email address field can't be empty");
                     passwordTextInputLayout.setError("Password field can't be empty");
                 }else if(email.equals(""))
                     emailAddressTextInputLayout.setError("Email address field can't be empty");

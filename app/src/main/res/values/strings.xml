@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">Arxict Task</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email">Email Address</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="create_account_question">Don\'t have an account Yet ?</string>
+    <string name="create_account_question">No account Yet ?</string>
     <string name="create_one_button">Create One</string>
     <string name="full_name">Full Name</string>
     <string name="password_confirmation">Password Confirmation</string>
@@ -14,4 +13,6 @@
     <string name="logout">Logout</string>
     <string name="no_connection">No Internet connection</string>
     <string name="retry">Tab To Retry</string>
+    <string name="contact_details">Contact Details</string>
+    <string name="tabs_activity_label">Contacts and Json</string>
 </resources>
