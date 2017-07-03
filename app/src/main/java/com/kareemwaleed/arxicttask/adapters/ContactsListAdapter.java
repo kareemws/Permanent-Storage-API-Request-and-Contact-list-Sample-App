@@ -36,4 +36,10 @@ public class ContactsListAdapter extends ArrayAdapter{
         contactNameTextView.setText(contactName);
         return convertView;
     }
+
+    @Nullable
+    @Override
+    public Object getItem(int position) {
+        return contactsListItems.get(position);
+    }
 }

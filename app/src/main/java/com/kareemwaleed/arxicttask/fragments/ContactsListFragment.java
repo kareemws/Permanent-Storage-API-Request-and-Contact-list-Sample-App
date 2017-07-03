@@ -2,6 +2,7 @@ package com.kareemwaleed.arxicttask.fragments;
 
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -13,12 +14,14 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.kareemwaleed.arxicttask.R;
-import com.kareemwaleed.arxicttask.models.ContactsListItem;
+import com.kareemwaleed.arxicttask.activities.ContactDetails;
 import com.kareemwaleed.arxicttask.adapters.ContactsListAdapter;
+import com.kareemwaleed.arxicttask.models.ContactsListItem;
 
 import java.util.ArrayList;
 
@@ -54,6 +57,17 @@ public class ContactsListFragment extends Fragment {
         ArrayList<ContactsListItem> contactsList = getContacts();
         contactsListAdapter = new ContactsListAdapter(getContext(), contactsList);
         listView.setAdapter(contactsListAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ContactsListItem tempContactsListItem = (ContactsListItem) contactsListAdapter.getItem(position);
+                Intent intent = new Intent(getActivity(), ContactDetails.class);
+                intent.putExtra("name", tempContactsListItem.getName());
+                intent.putExtra("phone", tempContactsListItem.getNumbers().get(0));
+                intent.putExtra("email", tempContactsListItem.getEmail());
+                startActivity(intent);
+            }
+        });
     }
 
     public ArrayList<ContactsListItem> getContacts() {
@@ -84,6 +98,13 @@ public class ContactsListFragment extends Fragment {
                         tempContactsListItem.addNumber(phoneNo);
                     }
                     pCur.close();
+                }
+                Cursor emailCursore = cr.query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, null
+                        , ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = ?", new String[]{id}, null);
+                while (emailCursore.moveToNext()){
+                   String email = emailCursore.getString(
+                            emailCursore.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
+                    tempContactsListItem.setEmail(email);
                 }
                 tempContactsArrayList.add(tempContactsListItem);
             }

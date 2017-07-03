@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class ContactsListItem {
     private String name;
     private ArrayList<String> numbers;
+    private String email;
 
     public ContactsListItem(){
         numbers = new ArrayList<>();
@@ -28,5 +29,13 @@ public class ContactsListItem {
 
     public void addNumber(String number) {
         numbers.add(number);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
