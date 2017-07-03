@@ -2,23 +2,21 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/create_account_activity_main_layout"
-    tools:context="com.kareemwaleed.arxicttask.CreateAccountActivity">
+    android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/create_account_activity_main_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp">
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/full_name_input_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="40dp">
+            android:layout_marginStart="15dp">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/full_name_edit_text"
@@ -54,7 +52,8 @@
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorAccent">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/password_edit_text"
@@ -73,7 +72,8 @@
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorAccent">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/password_confirmation_edit_text"
@@ -87,14 +87,15 @@
             android:id="@+id/create_account_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_below="@id/password_confirmation_input_layout"
             android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="50dp"
+            android:background="@color/colorAccent"
             android:text="Create Account"
             android:textAllCaps="false"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_below="@id/password_confirmation_input_layout"/>
+            android:textStyle="bold" />
 
     </RelativeLayout>
 </ScrollView>

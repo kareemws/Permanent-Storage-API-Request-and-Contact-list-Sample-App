@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CreateAccountActivity"
+            android:name=".activities.CreateAccountActivity"
             android:label="Create Account">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

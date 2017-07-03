@@ -2,6 +2,7 @@ package com.kareemwaleed.arxicttask.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -14,7 +15,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import com.kareemwaleed.arxicttask.CreateAccountActivity;
 import com.kareemwaleed.arxicttask.R;
 import com.kareemwaleed.arxicttask.database.ArxictDatabaseHandler;
 
@@ -28,11 +28,17 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputEditText passwordTextInputEditText;
     private Button loginButton;
     private Button createAccountButton;
+    private SharedPreferences user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        if(user.getBoolean("login_status", false)){
+            Intent intent = new Intent(LoginActivity.this, TabsActivity.class);
+            startActivity(intent);
+            finish();
+        }
         databaseHandler = new ArxictDatabaseHandler(getApplicationContext());
         initViewVars();
     }
@@ -71,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                 else{
                     boolean isSuccessful = databaseHandler.login(email, password);
                     if(isSuccessful){
+                        user.edit().putBoolean("login_status", true).apply();
                         Intent intent = new Intent(LoginActivity.this, TabsActivity.class);
                         startActivity(intent);
                         finish();

@@ -1,4 +1,4 @@
-package com.kareemwaleed.arxicttask;
+package com.kareemwaleed.arxicttask.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,16 +10,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.ScrollView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.kareemwaleed.arxicttask.activities.TabsActivity;
+import com.kareemwaleed.arxicttask.R;
 import com.kareemwaleed.arxicttask.database.ArxictDatabaseHandler;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
     ArxictDatabaseHandler databaseHandler;
-    private ScrollView mainActivityLayout;
+    private RelativeLayout mainActivityLayout;
     private TextInputLayout fullNameTextInputLayout;
     private TextInputEditText fullNameTextInputEditText;
     private TextInputLayout emailAddressTextInputLayout;
@@ -83,7 +83,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void initViewVars(){
-        mainActivityLayout = (ScrollView) findViewById(R.id.create_account_activity_main_layout);
+        mainActivityLayout = (RelativeLayout) findViewById(R.id.create_account_activity_main_layout);
         fullNameTextInputLayout = (TextInputLayout) findViewById(R.id.full_name_input_layout);
         fullNameTextInputEditText = (TextInputEditText) findViewById(R.id.full_name_edit_text);
         emailAddressTextInputLayout = (TextInputLayout) findViewById(R.id.email_address_input_layout);
