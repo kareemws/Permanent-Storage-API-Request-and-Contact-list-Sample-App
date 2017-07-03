@@ -2,6 +2,7 @@ package com.kareemwaleed.arxicttask.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -29,11 +30,13 @@ public class CreateAccountActivity extends AppCompatActivity {
     private TextInputLayout passwordConfirmationTextInputLayout;
     private TextInputEditText passwordConfirmationTextInputEditText;
     private Button createAccountButton;
+    private SharedPreferences user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+        user = getSharedPreferences("user", MODE_PRIVATE);
         databaseHandler = new ArxictDatabaseHandler(getApplicationContext());
         initViewVars();
     }
@@ -71,6 +74,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 else {
                     boolean isSuccessful = databaseHandler.createAccount(name, email, password);
                     if(isSuccessful){
+                        user.edit().putBoolean("login_status", true).apply();
                         Intent intent = new Intent(CreateAccountActivity.this, TabsActivity.class);
                         startActivity(intent);
                         finish();

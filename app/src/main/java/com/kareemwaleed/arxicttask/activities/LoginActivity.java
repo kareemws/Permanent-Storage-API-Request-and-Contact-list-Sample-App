@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        user = getSharedPreferences("user", MODE_PRIVATE);
         if(user.getBoolean("login_status", false)){
             Intent intent = new Intent(LoginActivity.this, TabsActivity.class);
             startActivity(intent);
