@@ -21,7 +21,6 @@ public class TabsActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private final int CONTACTS_PERMISSION_REQUEST = 0;
     private SharedPreferences user;
 
     @Override
