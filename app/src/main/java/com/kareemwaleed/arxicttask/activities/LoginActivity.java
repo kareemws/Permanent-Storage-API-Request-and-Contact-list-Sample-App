@@ -1,4 +1,4 @@
-package com.kareemwaleed.arxicttask;
+package com.kareemwaleed.arxicttask.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import com.kareemwaleed.arxicttask.activities.TabsActivity;
+import com.kareemwaleed.arxicttask.CreateAccountActivity;
+import com.kareemwaleed.arxicttask.R;
 import com.kareemwaleed.arxicttask.database.ArxictDatabaseHandler;
 
 public class LoginActivity extends AppCompatActivity {
