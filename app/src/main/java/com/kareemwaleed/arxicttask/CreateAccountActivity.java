@@ -1,6 +1,7 @@
 package com.kareemwaleed.arxicttask;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import com.kareemwaleed.arxicttask.activities.TabsActivity;
 import com.kareemwaleed.arxicttask.database.ArxictDatabaseHandler;
 
 public class CreateAccountActivity extends AppCompatActivity {
@@ -69,7 +71,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                 else {
                     boolean isSuccessful = databaseHandler.createAccount(name, email, password);
                     if(isSuccessful){
-                        Toast.makeText(CreateAccountActivity.this, "Successful", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(CreateAccountActivity.this, TabsActivity.class);
+                        startActivity(intent);
+                        finish();
+
                     }else
                         Toast.makeText(CreateAccountActivity.this, "Registration Error", Toast.LENGTH_LONG).show();
                 }

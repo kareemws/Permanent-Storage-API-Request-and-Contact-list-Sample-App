@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kareemwaleed.arxicttask">
 
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,6 +23,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LoginActivity"/>
+        </activity>
+        <activity android:name=".activities.TabsActivity"
+            android:theme="@style/NoActionBarAppTheme">
+
         </activity>
     </application>
 

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.kareemwaleed.arxicttask.activities.TabsActivity;
 import com.kareemwaleed.arxicttask.database.ArxictDatabaseHandler;
 
 public class LoginActivity extends AppCompatActivity {
@@ -71,6 +72,9 @@ public class LoginActivity extends AppCompatActivity {
                     boolean isSuccessful = databaseHandler.login(email, password);
                     if(isSuccessful){
                         Toast.makeText(LoginActivity.this, "Successful", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(LoginActivity.this, TabsActivity.class);
+                        startActivity(intent);
+                        finish();
                     }else
                         passwordTextInputLayout.setError("The password entered doesn't the email");
                 }
