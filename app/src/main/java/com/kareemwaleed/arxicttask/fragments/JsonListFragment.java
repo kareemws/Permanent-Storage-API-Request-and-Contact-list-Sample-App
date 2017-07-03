@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.kareemwaleed.arxicttask.R;
 import com.kareemwaleed.arxicttask.adapters.JsonListAdapter;
@@ -30,6 +32,7 @@ public class JsonListFragment extends Fragment {
 
     private ListView listView;
     private JsonListAdapter jsonListAdapter;
+    private RelativeLayout connectionProblemLayout;
 
     public JsonListFragment() {
     }
@@ -44,11 +47,14 @@ public class JsonListFragment extends Fragment {
                              Bundle savedInstanceState) {
         FrameLayout frameLayout = (FrameLayout) inflater.inflate(R.layout.fragment_json_list, container, false);
         listView = (ListView) frameLayout.findViewById(R.id.json_list);
-        if(isNetworkAvailable())
-            prepareListView();
-        else{
-
-        }
+        connectionProblemLayout = (RelativeLayout) frameLayout.findViewById(R.id.connection_problem);
+        connectionProblemLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                connectionBasedDirector();
+            }
+        });
+        connectionBasedDirector();
         return frameLayout;
     }
 
@@ -85,5 +91,18 @@ public class JsonListFragment extends Fragment {
                 = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    private void connectionBasedDirector(){
+        if(isNetworkAvailable()) {
+            connectionProblemLayout.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
+            prepareListView();
+        }
+        else{
+            Toast.makeText(getActivity(), "Connection Error", Toast.LENGTH_LONG).show();
+            listView.setVisibility(View.GONE);
+            connectionProblemLayout.setVisibility(View.VISIBLE);
+        }
     }
 }

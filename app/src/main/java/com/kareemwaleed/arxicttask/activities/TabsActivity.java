@@ -1,15 +1,20 @@
 package com.kareemwaleed.arxicttask.activities;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.kareemwaleed.arxicttask.R;
+import com.kareemwaleed.arxicttask.adapters.ViewPagerAdapter;
 import com.kareemwaleed.arxicttask.fragments.ContactsListFragment;
 import com.kareemwaleed.arxicttask.fragments.JsonListFragment;
-import com.kareemwaleed.arxicttask.adapters.ViewPagerAdapter;
 
 public class TabsActivity extends AppCompatActivity {
 
@@ -17,23 +22,18 @@ public class TabsActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private final int CONTACTS_PERMISSION_REQUEST = 0;
+    private SharedPreferences user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
+        user = getSharedPreferences("user", MODE_PRIVATE);
         initViewVars();
         setSupportActionBar(toolbar);
         setupViewPager();
         tabLayout.setupWithViewPager(viewPager);
         setupTabsIcons();
-//        int isPermissionGranted = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
-//        if (isPermissionGranted == PackageManager.PERMISSION_GRANTED) {
-//        } else {
-//            Log.i("Kareem:", "here");
-//            ActivityCompat.requestPermissions(this
-//                    , new String[]{Manifest.permission.READ_CONTACTS}, CONTACTS_PERMISSION_REQUEST);
-//        }
     }
 
     private void initViewVars(){
@@ -54,17 +54,24 @@ public class TabsActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(R.mipmap.ic_file_download_white_24dp);
     }
 
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        Log.i("Kareem:", "here");
-//        switch (requestCode) {
-//            case CONTACTS_PERMISSION_REQUEST:
-//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    Log.i("Kareem:", "Granted");
-//                } else {
-//                    Log.i("Kareem:", "Denied");
-//                }
-//        }
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.tabs_layout_option_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                user.edit().clear().apply();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+            default:
+                return false;
+        }
+    }
 }
