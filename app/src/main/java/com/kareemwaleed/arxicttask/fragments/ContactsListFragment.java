@@ -1,16 +1,11 @@
 package com.kareemwaleed.arxicttask.fragments;
 
-import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.kareemwaleed.arxicttask.R;
-import com.kareemwaleed.arxicttask.activities.ContactDetails;
+import com.kareemwaleed.arxicttask.activities.ContactDetailsActivity;
 import com.kareemwaleed.arxicttask.adapters.ContactsListAdapter;
 import com.kareemwaleed.arxicttask.models.ContactsListItem;
 
@@ -28,7 +23,7 @@ import java.util.ArrayList;
 public class ContactsListFragment extends Fragment {
     private ListView listView;
     private ContactsListAdapter contactsListAdapter;
-    private final int CONTACTS_PERMISSION_REQUEST = 0;
+    private boolean permissionGranted;
 
     public ContactsListFragment() {
     }
@@ -43,13 +38,9 @@ public class ContactsListFragment extends Fragment {
                              Bundle savedInstanceState) {
         FrameLayout frameLayout = (FrameLayout) inflater.inflate(R.layout.fragment_contacts_list, container, false);
         listView = (ListView) frameLayout.findViewById(R.id.contacts_list);
-        int isPermissionGranted = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS);
-        if (isPermissionGranted == PackageManager.PERMISSION_GRANTED) {
+        permissionGranted = getArguments().getBoolean("permission");
+        if(permissionGranted)
             prepareListView();
-        } else {
-            ActivityCompat.requestPermissions(getActivity()
-                    , new String[]{Manifest.permission.READ_CONTACTS}, CONTACTS_PERMISSION_REQUEST);
-        }
         return frameLayout;
     }
 
@@ -61,7 +52,7 @@ public class ContactsListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ContactsListItem tempContactsListItem = (ContactsListItem) contactsListAdapter.getItem(position);
-                Intent intent = new Intent(getActivity(), ContactDetails.class);
+                Intent intent = new Intent(getActivity(), ContactDetailsActivity.class);
                 intent.putExtra("name", tempContactsListItem.getName());
                 intent.putExtra("phone", tempContactsListItem.getNumbers().get(0));
                 intent.putExtra("email", tempContactsListItem.getEmail());
@@ -110,16 +101,5 @@ public class ContactsListFragment extends Fragment {
             }
         }
         return tempContactsArrayList;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case CONTACTS_PERMISSION_REQUEST:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    prepareListView();
-                } else {
-                }
-        }
     }
 }

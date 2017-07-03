@@ -1,5 +1,6 @@
 package com.kareemwaleed.arxicttask.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -51,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
             }
         });
         activityMainLayout.setOnTouchListener(new View.OnTouchListener() {
@@ -131,5 +132,11 @@ public class LoginActivity extends AppCompatActivity {
         passwordTextInputEditText = (TextInputEditText) findViewById(R.id.password_edit_text);
         loginButton = (Button) findViewById(R.id.login_button);
         createAccountButton = (Button) findViewById(R.id.create_account_button);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == Activity.RESULT_OK)
+            finish();
     }
 }

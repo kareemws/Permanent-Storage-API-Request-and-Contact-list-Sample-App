@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.kareemwaleed.arxicttask.R;
 import com.kareemwaleed.arxicttask.models.ContactsListItem;
 
-public class ContactDetails extends AppCompatActivity {
+public class ContactDetailsActivity extends AppCompatActivity {
     private RelativeLayout phoneNumberLayout;
     private RelativeLayout emailLayout;
     private TextView contactName;
@@ -48,9 +48,9 @@ public class ContactDetails extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(Intent.ACTION_CALL);
                     intent.setData(Uri.parse("tel:" + contactDetails.getNumbers().get(0)));
-                    if (ContextCompat.checkSelfPermission(ContactDetails.this, Manifest.permission.CALL_PHONE)
+                    if (ContextCompat.checkSelfPermission(ContactDetailsActivity.this, Manifest.permission.CALL_PHONE)
                             != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(ContactDetails.this, new String[]{Manifest.permission.CALL_PHONE}
+                        ActivityCompat.requestPermissions(ContactDetailsActivity.this, new String[]{Manifest.permission.CALL_PHONE}
                                 , PHONE_CALL_PERMISSION_REQUEST);
                     } else
                         startActivity(intent);

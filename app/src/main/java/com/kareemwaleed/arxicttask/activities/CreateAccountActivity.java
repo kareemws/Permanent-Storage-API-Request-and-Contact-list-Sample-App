@@ -1,5 +1,6 @@
 package com.kareemwaleed.arxicttask.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -77,6 +78,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                         user.edit().putBoolean("login_status", true).apply();
                         Intent intent = new Intent(CreateAccountActivity.this, TabsActivity.class);
                         startActivity(intent);
+                        setResult(Activity.RESULT_OK);
                         finish();
 
                     }else

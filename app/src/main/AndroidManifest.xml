@@ -32,8 +32,13 @@
         </activity>
         <activity
             android:name=".activities.TabsActivity"
-            android:theme="@style/NoActionBarAppTheme"></activity>
-        <activity android:name=".activities.ContactDetails"></activity>
+            android:theme="@style/NoActionBarAppTheme"
+            android:label="Contacts and Jsons"></activity>
+        <activity android:name=".activities.ContactDetailsActivity"
+            android:label="Contact Details">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.TabsActivity"/>
+        </activity>
     </application>
 
 </manifest>
