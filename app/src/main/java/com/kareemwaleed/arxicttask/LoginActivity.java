@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.kareemwaleed.arxicttask.activities.TabsActivity;
 import com.kareemwaleed.arxicttask.database.ArxictDatabaseHandler;
@@ -32,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         databaseHandler = new ArxictDatabaseHandler(getApplicationContext());
         initViewVars();
     }
@@ -71,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
                 else{
                     boolean isSuccessful = databaseHandler.login(email, password);
                     if(isSuccessful){
-                        Toast.makeText(LoginActivity.this, "Successful", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, TabsActivity.class);
                         startActivity(intent);
                         finish();
