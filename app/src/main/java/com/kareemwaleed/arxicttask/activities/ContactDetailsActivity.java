@@ -32,6 +32,16 @@ public class ContactDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_details);
         initViewVars();
+        prepareContactDetailsView();
+    }
+
+
+    /**
+     * Extracts the contact details sent by the ContactListFragment with the intent.
+     * Checks for the availability of the information to either show the view that represents that piece of information
+     * or not.
+     */
+    private void prepareContactDetailsView(){
         contactDetails = new ContactsListItem();
         contactDetails.setName(getIntent().getStringExtra("name"));
         contactDetails.setEmail(getIntent().getStringExtra("email"));
@@ -48,6 +58,9 @@ public class ContactDetailsActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(Intent.ACTION_CALL);
                     intent.setData(Uri.parse("tel:" + contactDetails.getNumbers().get(0)));
+                    /**
+                     * Checking for CALL_PHONE permission and explicitly asking for it if not granted
+                     */
                     if (ContextCompat.checkSelfPermission(ContactDetailsActivity.this, Manifest.permission.CALL_PHONE)
                             != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(ContactDetailsActivity.this, new String[]{Manifest.permission.CALL_PHONE}
@@ -64,6 +77,10 @@ public class ContactDetailsActivity extends AppCompatActivity {
             email.setText(contactDetails.getEmail());
     }
 
+
+    /**
+     * Initializes view variables
+     */
     private void initViewVars() {
         phoneNumberLayout = (RelativeLayout) findViewById(R.id.phone_number_layout);
         emailLayout = (RelativeLayout) findViewById(R.id.email_layout);
@@ -73,6 +90,10 @@ public class ContactDetailsActivity extends AppCompatActivity {
         callButton = (ImageButton) findViewById(R.id.call_button);
     }
 
+
+    /**
+     * Receives the permission demand response
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){

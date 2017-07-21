@@ -25,6 +25,9 @@ public class JsonListAdapter extends ArrayAdapter {
         this.jsonListItems = jsonListItems;
     }
 
+    /**
+     * Inflates the custom list item and initializes it
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

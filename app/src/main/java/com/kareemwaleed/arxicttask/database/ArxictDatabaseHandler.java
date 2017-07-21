@@ -11,6 +11,10 @@ import android.database.sqlite.SQLiteDatabase;
 public class ArxictDatabaseHandler {
     private Context context;
     private SQLiteDatabase database;
+
+    /**
+     * Creates the database and the user table on create and instance of the handler
+     */
     public ArxictDatabaseHandler(Context context){
         this.context = context;
         database = context.openOrCreateDatabase("arxict", Context.MODE_PRIVATE, null);
@@ -22,6 +26,9 @@ public class ArxictDatabaseHandler {
         }
     }
 
+    /**
+     * Search the database for an email address/password match
+     */
     public boolean login(String emailAddress, String password){
         String query = "SELECT * FROM user WHERE email = '" + emailAddress + "' and password = '" + password + "'";
         Cursor cursor;
@@ -36,6 +43,9 @@ public class ArxictDatabaseHandler {
         return false;
     }
 
+    /**
+     * Inserts the user data in the database
+     */
     public boolean createAccount(String fullName, String emailAddress, String password){
         String query = "INSERT INTO user (name, email, password) VALUES('" + fullName + "', '" + emailAddress
                 +"', '"+ password + "')";

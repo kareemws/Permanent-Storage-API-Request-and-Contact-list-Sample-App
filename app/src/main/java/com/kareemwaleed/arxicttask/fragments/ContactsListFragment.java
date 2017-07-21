@@ -38,6 +38,7 @@ public class ContactsListFragment extends Fragment {
                              Bundle savedInstanceState) {
         FrameLayout frameLayout = (FrameLayout) inflater.inflate(R.layout.fragment_contacts_list, container, false);
         listView = (ListView) frameLayout.findViewById(R.id.contacts_list);
+        //Gets the read contact permission from the parent activity (TabsActviity)
         permissionGranted = getArguments().getBoolean("permission");
         if(permissionGranted)
             prepareListView();
@@ -48,6 +49,10 @@ public class ContactsListFragment extends Fragment {
         ArrayList<ContactsListItem> contactsList = getContacts();
         contactsListAdapter = new ContactsListAdapter(getContext(), contactsList);
         listView.setAdapter(contactsListAdapter);
+        /**
+         * Handles list item click by directing the user to a new activity representing contact details
+         * Passes to the new activity the details that will be shown and retrieved here
+         */
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -61,6 +66,9 @@ public class ContactsListFragment extends Fragment {
         });
     }
 
+    /**
+     * Retrieves the id, display name, phone number and email information of all the contacts
+     */
     public ArrayList<ContactsListItem> getContacts() {
         ArrayList<ContactsListItem> tempContactsArrayList = new ArrayList<>();
         ContactsListItem tempContactsListItem = null;

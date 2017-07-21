@@ -13,6 +13,9 @@ import java.util.Map;
  */
 
 public abstract class JsonParser {
+    /**
+     * Directs the parsing proccess based on the type of the object passed as a parameter
+     */
     public static Map<String, Object> parser(Object json) throws JSONException {
         Map<String, Object> retMap = new HashMap<>();
         if (json != null) {
@@ -24,6 +27,9 @@ public abstract class JsonParser {
         return retMap;
     }
 
+    /**
+     * Handles passed objects of JSONOject type
+     */
     public static Map<String, Object> toMap(JSONObject object) throws JSONException {
         Map<String, Object> map = new HashMap<>();
 
@@ -42,6 +48,9 @@ public abstract class JsonParser {
         return map;
     }
 
+    /**
+     * Handles passed object of JSONArray type
+     */
     public static Map<String, Object> toList(JSONArray array) throws JSONException {
         Map<String, Object> list = new HashMap<>();
         for (int i = 0; i < array.length(); i++) {

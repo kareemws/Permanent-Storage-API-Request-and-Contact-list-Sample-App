@@ -45,6 +45,9 @@ public class CreateAccountActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        /**
+         * Handles the touch outside any text view to dismiss the soft keyboard
+         */
         mainActivityLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -54,6 +57,10 @@ public class CreateAccountActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Handles the Create Account button click.
+         * Validates the information provided in each text view to either pass it or give an error message
+         */
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,9 +85,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                         user.edit().putBoolean("login_status", true).apply();
                         Intent intent = new Intent(CreateAccountActivity.this, TabsActivity.class);
                         startActivity(intent);
-                        setResult(Activity.RESULT_OK);
+                        setResult(Activity.RESULT_OK); //if the user signed up the login receives ok to finish
                         finish();
-
                     }else
                         Toast.makeText(CreateAccountActivity.this, "Registration Error", Toast.LENGTH_LONG).show();
                 }
@@ -88,6 +94,10 @@ public class CreateAccountActivity extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * Initializes view variables
+     */
     private void initViewVars(){
         mainActivityLayout = (RelativeLayout) findViewById(R.id.create_account_activity_main_layout);
         fullNameTextInputLayout = (TextInputLayout) findViewById(R.id.full_name_input_layout);

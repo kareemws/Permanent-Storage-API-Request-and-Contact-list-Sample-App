@@ -36,6 +36,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         user = getSharedPreferences("user", MODE_PRIVATE);
+        /**
+         * Checking the shared preference to see whether there is a user logged in or not, if
+         * a user has logged in previously the Lists show up directly else the login page shows up
+         */
         if(user.getBoolean("login_status", false)){
             Intent intent = new Intent(LoginActivity.this, TabsActivity.class);
             startActivity(intent);
@@ -48,6 +52,10 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        /**
+         * Handles the create account text in the bottom of the login page click
+         */
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +63,10 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+
+        /**
+         * Handles the touch outside any text view to dismiss the soft keyboard
+         */
         activityMainLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -64,6 +76,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+        /**
+         * Handles the login button click.
+         * Validates the information given, if right start the lists else show error message
+         */
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +105,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Handles the case of dismissing the error message shown when the user tries to modify what was the cause
+         * of it
+         */
         emailAddressTextInputEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -123,6 +144,10 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * Initializes view variables
+     */
     private void initViewVars(){
         activityMainLayout = (RelativeLayout) findViewById(R.id.login_activity_main_layout);
         emailAddressTextInputLayout = (TextInputLayout) findViewById(R.id.email_address_input_layout);
@@ -133,6 +158,12 @@ public class LoginActivity extends AppCompatActivity {
         createAccountButton = (Button) findViewById(R.id.create_account_button);
     }
 
+
+    /**
+     * Receives the sign up intent result to handle the case of a user sign up and gets directed to the list
+     * without this handling the back button press will take the user to the login screen again but with the handling
+     * the back button press will terminate the app
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == Activity.RESULT_OK)

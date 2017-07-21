@@ -33,6 +33,11 @@ public class TabsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_tabs);
+        /**
+         * Checking for the read contact permission and asking for the permission explicitly
+         * if not granted
+         */
         int isPermissionGranted = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
         if (isPermissionGranted == PackageManager.PERMISSION_GRANTED) {
             permissionGranted = true;
@@ -41,7 +46,6 @@ public class TabsActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this
                     , new String[]{Manifest.permission.READ_CONTACTS}, CONTACTS_PERMISSION_REQUEST);
         }
-        setContentView(R.layout.activity_tabs);
         user = getSharedPreferences("user", MODE_PRIVATE);
         initViewVars();
         setSupportActionBar(toolbar);
@@ -52,14 +56,24 @@ public class TabsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Initializes view variables
+     */
     private void initViewVars() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabLayout = (TabLayout) findViewById(R.id.tabs_layout);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
     }
 
+    /**
+     * Initializes the ViewPager with and adapter containing
+     * the contact list fragment and the json list fragment
+     */
     private void setupViewPager() {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        /**
+         * Passing a boolean indicating whether the user grants the contacts read permission or not
+         */
         Bundle bundle = new Bundle();
         bundle.putBoolean("permission", permissionGranted);
         ContactsListFragment temp = new ContactsListFragment();
@@ -69,11 +83,17 @@ public class TabsActivity extends AppCompatActivity {
         viewPager.setAdapter(viewPagerAdapter);
     }
 
+    /**
+     * Sets tabs' icons
+     */
     private void setupTabsIcons() {
         tabLayout.getTabAt(0).setIcon(R.mipmap.ic_phone_white_24dp);
         tabLayout.getTabAt(1).setIcon(R.mipmap.ic_file_download_white_24dp);
     }
 
+    /**
+     * Inflates the option menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -81,6 +101,9 @@ public class TabsActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * handles the logout action
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -95,6 +118,9 @@ public class TabsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Receives the permission request result and prepare the view accordingly
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {

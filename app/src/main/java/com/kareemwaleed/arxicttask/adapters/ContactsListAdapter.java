@@ -25,6 +25,9 @@ public class ContactsListAdapter extends ArrayAdapter{
         this.contactsListItems = contactsListItems;
     }
 
+    /**
+     * Inflates the custom list item and initializes it
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -37,6 +40,10 @@ public class ContactsListAdapter extends ArrayAdapter{
         return convertView;
     }
 
+
+    /**
+     * Returns a ContactListItem model instance based on the position argument
+     */
     @Nullable
     @Override
     public Object getItem(int position) {

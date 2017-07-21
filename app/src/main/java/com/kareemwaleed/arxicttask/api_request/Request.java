@@ -23,6 +23,9 @@ public class Request extends AsyncTask<RequestParameters, Void, Object> {
         String result = "";
         HttpURLConnection request = null;
         InputStream inputStream = null;
+        /**
+         * Tries to open the connection with the url provided and read the result
+         */
         try {
             URL reqURL = new URL(params[0].getUrl());
             request = (HttpURLConnection) (reqURL.openConnection());

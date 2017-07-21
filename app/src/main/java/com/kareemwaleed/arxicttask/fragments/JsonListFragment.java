@@ -48,6 +48,9 @@ public class JsonListFragment extends Fragment {
         FrameLayout frameLayout = (FrameLayout) inflater.inflate(R.layout.fragment_json_list, container, false);
         listView = (ListView) frameLayout.findViewById(R.id.json_list);
         connectionProblemLayout = (RelativeLayout) frameLayout.findViewById(R.id.connection_problem);
+        /**
+         * Handles the connection error notification click
+         */
         connectionProblemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +61,9 @@ public class JsonListFragment extends Fragment {
         return frameLayout;
     }
 
+    /**
+     * Calling the api and receives the result parsed as a Map
+     */
     private void prepareListView(){
         Request request = new Request();
         Map<String, Object> requestResult = new HashMap<>();
@@ -72,6 +78,9 @@ public class JsonListFragment extends Fragment {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+        /**
+         * dissemple the map to extract the information
+         */
         Iterator setIterator = requestResult.keySet().iterator();
         while (setIterator.hasNext()){
             Map<String, Object> tempMap = (Map<String, Object>) requestResult.get(setIterator.next());
@@ -86,6 +95,9 @@ public class JsonListFragment extends Fragment {
         listView.setAdapter(jsonListAdapter);
     }
 
+    /**
+     * Checks for internet connection availability
+     */
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -93,6 +105,10 @@ public class JsonListFragment extends Fragment {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    /**
+     * sets the view based on the internet connection state, if available show the list else notify the user that he connection
+     * is not available
+     */
     private void connectionBasedDirector(){
         if(isNetworkAvailable()) {
             connectionProblemLayout.setVisibility(View.GONE);
